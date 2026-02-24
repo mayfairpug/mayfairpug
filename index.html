@@ -95,23 +95,14 @@
 <div class="showcase">
 <div class="showcard reveal">
 <div class="showicon">
-<!-- Pug collar tag -->
-<svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
-<path d="M12 28c0-10 8-18 18-18h4c10 0 18 8 18 18v8c0 10-8 18-18 18h-4c-10 0-18-8-18-18v-8z" opacity=".9" stroke="white" stroke-width="3"></path>
-<path d="M20 28c0-6 5-11 11-11h2c6 0 11 5 11 11v8c0 6-5 11-11 11h-2c-6 0-11-5-11-11v-8z" fill="white" opacity=".12"></path>
-<path d="M32 24l4 6-4 6-4-6 4-6z" fill="white" opacity=".95"></path>
-</svg>
-</div>
-<h3>Vetted creators (not promo accounts)</h3>
-<p>We manually source micro &amp; small creators in your country and niche, then vet engagement + audience fit.</p>
-</div>
-<div class="showcard reveal">
-<div class="showicon">
-<!-- Paw -->
-<svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
-<path d="M22 28c-4 0-7-4-7-9s3-9 7-9 7 4 7 9-3 9-7 9zm20 0c-4 0-7-4-7-9s3-9 7-9 7 4 7 9-3 9-7 9z" fill="white" opacity=".9"></path>
-<path d="M16 40c0-7 7-12 16-12s16 5 16 12c0 10-9 18-16 18S16 50 16 40z" fill="white" opacity=".85" stroke="white" stroke-width="3"></path>
-<path d="M32 36c-6 0-10 3-10 7 0 7 6 13 10 13s10-6 10-13c0-4-4-7-10-7z" fill="white" opacity=".18"></path>
+<!-- Checklist / handshake -->
+<svg aria-hidden="true" viewBox="0 0 64 64" fill="none">
+  <path d="M18 14h20a6 6 0 0 1 6 6v26a6 6 0 0 1-6 6H18a6 6 0 0 1-6-6V20a6 6 0 0 1 6-6z" stroke="white" stroke-width="3" opacity=".92"/>
+  <path d="M22 24h16" stroke="white" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+  <path d="M22 33h12" stroke="white" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+  <path d="M22 42h10" stroke="white" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+  <path d="M44 30l4-4 6 6-4 4" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>
+  <path d="M46 32l-6 6c-2 2-5 2-7 0l-1-1" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>
 </svg>
 </div>
 <h3>Done-for-you collab management</h3>
@@ -163,7 +154,14 @@
 <h2 class="reveal">Why most influencer outreach flops</h2>
 <p class="lead reveal">If it feels like chaos… it usually is. Here’s the difference between “DIY DMs” and <b>Mayfair Pug</b>.</p>
 </div>
-<div class="compare reveal">
+<div class="compare-controls reveal" aria-label="Comparison controls">
+  <button class="seg on" type="button" data-compare-mode="both">Both</button>
+  <button class="seg" type="button" data-compare-mode="diy">DIY</button>
+  <button class="seg" type="button" data-compare-mode="mayfair">Mayfair</button>
+  <span class="compare-hint">Tap a row for details</span>
+</div>
+
+<div class="compare reveal" data-mode="both">
 <div class="compare-head">
 <div></div>
 <div class="compare-col bad">
@@ -181,28 +179,58 @@
 </div>
 <div class="compare-row">
 <div class="compare-label"><span class="ico i-chat"></span>Endless DMs, no replies, flaky creators</div>
-<div class="compare-cell bad"><span class="mark x"></span> You chase. They ghost.</div>
-<div class="compare-cell good"><span class="mark check"></span> We do outreach + follow-ups + deadlines.</div>
+<div class="compare-cell bad" data-col="DIY"><span class="mark x"></span> You chase. They ghost.</div>
+<div class="compare-cell good" data-col="Mayfair"><span class="mark check"></span> We do outreach + follow-ups + deadlines.<div class="compare-more" aria-hidden="true">
+  <div class="more-grid">
+    <div><span class="mini-tag">DIY</span><span class="more-text">Manual outreach is messy without follow‑ups and a system.</span></div>
+    <div><span class="mini-tag good">Mayfair</span><span class="more-text">We outreach, follow up, set deadlines, and keep the pipeline moving.</span></div>
+  </div>
+</div>
+</div>
 </div>
 <div class="compare-row">
 <div class="compare-label"><span class="ico i-shield"></span>Fake followers / low-quality engagement</div>
-<div class="compare-cell bad"><span class="mark x"></span> Hard to spot. Easy to waste time.</div>
-<div class="compare-cell good"><span class="mark check"></span> Engagement, audience fit, fraud checks.</div>
+<div class="compare-cell bad" data-col="DIY"><span class="mark x"></span> Hard to spot. Easy to waste time.</div>
+<div class="compare-cell good" data-col="Mayfair"><span class="mark check"></span> Engagement, audience fit, fraud checks.<div class="compare-more" aria-hidden="true">
+  <div class="more-grid">
+    <div><span class="mini-tag">DIY</span><span class="more-text">Hard to spot fraud quickly when you’re scanning profiles at speed.</span></div>
+    <div><span class="mini-tag good">Mayfair</span><span class="more-text">We vet engagement quality + audience fit before anyone is approved.</span></div>
+  </div>
+</div>
+</div>
 </div>
 <div class="compare-row">
 <div class="compare-label"><span class="ico i-rocket"></span>“Promo accounts” that can’t sell anything</div>
-<div class="compare-cell bad"><span class="mark x"></span> Lots of noise. Low trust.</div>
-<div class="compare-cell good"><span class="mark check"></span> Content-first creators who can actually convert.</div>
+<div class="compare-cell bad" data-col="DIY"><span class="mark x"></span> Lots of noise. Low trust.</div>
+<div class="compare-cell good" data-col="Mayfair"><span class="mark check"></span> Content-first creators who can actually convert.<div class="compare-more" aria-hidden="true">
+  <div class="more-grid">
+    <div><span class="mini-tag">DIY</span><span class="more-text">Lots of accounts exist only to sell promos, not to influence.</span></div>
+    <div><span class="mini-tag good">Mayfair</span><span class="more-text">We prioritise content-first creators that look natural and convert.</span></div>
+  </div>
+</div>
+</div>
 </div>
 <div class="compare-row">
 <div class="compare-label"><span class="ico i-clock"></span>No clear deliverables — content arrives late (or not at all)</div>
-<div class="compare-cell bad"><span class="mark x"></span> Vague expectations = missed delivery.</div>
-<div class="compare-cell good"><span class="mark check"></span> Brief + contract + reminders = content lands.</div>
+<div class="compare-cell bad" data-col="DIY"><span class="mark x"></span> Vague expectations = missed delivery.</div>
+<div class="compare-cell good" data-col="Mayfair"><span class="mark check"></span> Brief + contract + reminders = content lands.<div class="compare-more" aria-hidden="true">
+  <div class="more-grid">
+    <div><span class="mini-tag">DIY</span><span class="more-text">Without a brief and checkpoints, delivery slips (or never happens).</span></div>
+    <div><span class="mini-tag good">Mayfair</span><span class="more-text">Briefs, reminders, and agreements — so content lands on time.</span></div>
+  </div>
+</div>
+</div>
 </div>
 <div class="compare-row">
 <div class="compare-label"><span class="ico i-lock"></span>No usage rights — you can’t legally run ads</div>
-<div class="compare-cell bad"><span class="mark x"></span> Risky to boost or repurpose.</div>
-<div class="compare-cell good"><span class="mark check"></span> Usage rights secured + original files delivered.</div>
+<div class="compare-cell bad" data-col="DIY"><span class="mark x"></span> Risky to boost or repurpose.</div>
+<div class="compare-cell good" data-col="Mayfair"><span class="mark check"></span> Usage rights secured + original files delivered.<div class="compare-more" aria-hidden="true">
+  <div class="more-grid">
+    <div><span class="mini-tag">DIY</span><span class="more-text">Even great content can’t be boosted without rights.</span></div>
+    <div><span class="mini-tag good">Mayfair</span><span class="more-text">We secure usage rights + deliver original files you can run as ads.</span></div>
+  </div>
+</div>
+</div>
 </div>
 <div class="compare-foot">
 <div class="foot-left">
@@ -800,5 +828,7 @@
 <script src="script.js"></script>
 
 <button aria-label="Back to top" class="btt" id="backToTop" title="Back to top"><span class="btt-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5l7 7-1.4 1.4L13 8.8V20h-2V8.8L6.4 13.4 5 12l7-7z" fill="currentColor"/></svg></span></button>
+
+<div id="toastStack" class="toast-stack" aria-live="polite" aria-atomic="true"></div>
 </body>
 </html>

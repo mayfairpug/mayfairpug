@@ -132,3 +132,134 @@ window.addEventListener('scroll', ()=>{
   else btt.classList.remove('on');
 }, {passive:true});
 btt?.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+
+
+/* =========================================
+   Polishing pass: IG copy buttons, compare interactivity, subtle live toasts
+   ========================================= */
+
+// Copy link buttons in IG cards
+document.querySelectorAll('.ig-copy').forEach((btn)=>{
+  btn.addEventListener('click', async (e)=>{
+    e.stopPropagation();
+    const url = btn.getAttribute('data-copy') || '';
+    if(!url) return;
+    try{
+      await navigator.clipboard.writeText(url);
+      const prev = btn.textContent.trim();
+      btn.classList.add('primary');
+      btn.textContent = 'Copied';
+      setTimeout(()=>{ btn.classList.remove('primary'); btn.textContent = prev.includes('Copy') ? 'Copy link' : prev; }, 1200);
+    }catch(err){
+      // Fallback
+      const ta = document.createElement('textarea');
+      ta.value = url;
+      document.body.appendChild(ta);
+      ta.select();
+      try{ document.execCommand('copy'); }catch(_){}
+      ta.remove();
+    }
+  });
+});
+
+// Compare controls (Both / DIY / Mayfair)
+(function initCompareControls(){
+  const wrap = document.querySelector('.compare');
+  const controls = document.querySelector('.compare-controls');
+  if(!wrap || !controls) return;
+
+  const setMode = (mode)=>{
+    wrap.setAttribute('data-mode', mode);
+    controls.querySelectorAll('.seg').forEach(b=>{
+      b.classList.toggle('on', b.getAttribute('data-compare-mode') === mode);
+    });
+  };
+
+  controls.querySelectorAll('.seg').forEach((b)=>{
+    b.addEventListener('click', ()=>{
+      setMode(b.getAttribute('data-compare-mode') || 'both');
+    });
+  });
+
+  // default (mobile users can switch)
+  setMode(wrap.getAttribute('data-mode') || 'both');
+})();
+
+// Tap rows to expand details
+document.querySelectorAll('.compare-row').forEach((row)=>{
+  row.addEventListener('click', ()=>{
+    row.classList.toggle('open');
+  });
+});
+
+// Subtle “live activity” toasts (non-claiming, just signals activity)
+(function initToasts(){
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(prefersReduced) return;
+
+  const stack = document.getElementById('toastStack');
+  if(!stack) return;
+
+  const UK = [
+    {city:'London', flag:'🇬🇧'},
+    {city:'Manchester', flag:'🇬🇧'},
+    {city:'Birmingham', flag:'🇬🇧'},
+    {city:'Leeds', flag:'🇬🇧'},
+    {city:'Bristol', flag:'🇬🇧'},
+    {city:'Edinburgh', flag:'🇬🇧'},
+    {city:'Glasgow', flag:'🇬🇧'}
+  ];
+  const US = [
+    {city:'Austin', flag:'🇺🇸'},
+    {city:'Miami', flag:'🇺🇸'},
+    {city:'New York', flag:'🇺🇸'},
+    {city:'Los Angeles', flag:'🇺🇸'},
+    {city:'Dallas', flag:'🇺🇸'},
+    {city:'Chicago', flag:'🇺🇸'},
+    {city:'Seattle', flag:'🇺🇸'},
+    {city:'Denver', flag:'🇺🇸'}
+  ];
+
+  const pick = (arr)=>arr[Math.floor(Math.random()*arr.length)];
+  const rand = (min,max)=>Math.floor(Math.random()*(max-min+1))+min;
+
+  const messages = [
+    (loc)=>({title:`Sourcing now • ${loc.city}`, sub:`New creators being matched in ${loc.flag}`}),
+    (loc)=>({title:`Interest spike • ${loc.city}`, sub:`Brands viewing packages ${loc.flag}`}),
+    (loc)=>({title:`Pipeline active • ${loc.city}`, sub:`Shortlists being built ${loc.flag}`}),
+  ];
+
+  function showToast(){
+    // keep it tasteful
+    const loc = Math.random() < 0.55 ? pick(UK) : pick(US);
+    const msg = pick(messages)(loc);
+
+    const el = document.createElement('div');
+    el.className = 'toast';
+    el.innerHTML = `
+      <div class="flag" aria-hidden="true">${loc.flag}</div>
+      <div>
+        <b>${msg.title}</b>
+        <span>${msg.sub}</span>
+      </div>
+    `.trim();
+
+    stack.appendChild(el);
+
+    // cap
+    const all = stack.querySelectorAll('.toast');
+    if(all.length > 2) all[0].remove();
+
+    setTimeout(()=>{
+      el.classList.add('out');
+      setTimeout(()=>el.remove(), 340);
+    }, 6500);
+  }
+
+  // Start after a short delay, then random cadence
+  setTimeout(showToast, 4200);
+  setInterval(()=>{
+    // random-ish cadence without jitter spam
+    if(Math.random() < 0.78) showToast();
+  }, rand(12000, 18000));
+})();
