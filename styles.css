@@ -1350,10 +1350,13 @@ blockquote.instagram-media,
               radial-gradient(120% 120% at 85% 15%, rgba(50,209,255,.18), transparent 60%),
               rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.10);
-  /* Reels are vertical — keep the full video visible */
+  /* Reels are vertical — show as a true 9:16 preview */
   aspect-ratio: 9 / 16;
 }
+
 .ig-frame{
+  position:absolute;
+  inset:0;
   width:100%;
   height:100%;
   border:0;
@@ -1361,10 +1364,10 @@ blockquote.instagram-media,
   background:transparent;
 }
 
-@media(max-width:560px){
-  .ig-embed{ height: 215px; }
+/* On larger screens, keep cards from becoming comically tall */
+@media(min-width:981px){
+  .ig-embed{ max-height: 620px; }
 }
-
 
 .ig-embed > blockquote{ position:relative; z-index:1; }
 .ig-embed > blockquote *{ max-width:100% !important; }
