@@ -1765,3 +1765,123 @@ blockquote.instagram-media,
   .toast{ animation:none; opacity:1; transform:none; }
   .toast.out{ animation:none; opacity:0; }
 }
+
+/* --- Mobile comparison cards (replaces the horizontal compare table on small screens) --- */
+.compare-cards{display:none;}
+.compare-card{
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.18);
+  border-radius:26px;
+  padding:16px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.25);
+  backdrop-filter: blur(10px);
+}
+.compare-card__head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+.compare-card__title{
+  font-size:18px;
+  line-height:1.25;
+  margin:0;
+}
+.compare-card__sides{
+  display:grid;
+  gap:12px;
+}
+.compare-side{
+  border-radius:18px;
+  padding:14px 14px 12px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.04);
+}
+.compare-side__top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+.compare-side__main{
+  margin:0 0 8px 0;
+  font-weight:650;
+  letter-spacing:.1px;
+}
+.compare-side__sub{
+  margin:0;
+  opacity:.82;
+  font-size:14px;
+  line-height:1.35;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 10px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.2px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
+}
+.pill.diy{
+  background:rgba(170, 120, 255, .14);
+  border-color:rgba(170, 120, 255, .32);
+}
+.pill.mayfair{
+  background:rgba(60, 220, 160, .12);
+  border-color:rgba(60, 220, 160, .28);
+}
+.compare-side.diy .mark.x{
+  width:28px;height:28px;border-radius:999px;
+  display:inline-grid;place-items:center;
+  background:rgba(255, 76, 120, .10);
+  border:1px solid rgba(255, 76, 120, .35);
+}
+.compare-side.mayfair .mark.check{
+  width:28px;height:28px;border-radius:999px;
+  display:inline-grid;place-items:center;
+  background:rgba(60, 220, 160, .10);
+  border:1px solid rgba(60, 220, 160, .33);
+}
+
+@media (max-width: 720px){
+  /* breathe a bit more on mobile */
+  .section{padding:64px 0;}
+  .section-head{margin-bottom:18px;}
+  .section-head .lead{margin-top:10px;}
+
+  /* swap compare table for cards */
+  .compare, .compare-controls{display:none !important;}
+  .compare-cards{display:grid; gap:14px; margin-top:14px;}
+  .compare-card{padding:16px;}
+  .compare-card__title{font-size:17px;}
+}
+
+/* tiny phones */
+@media (max-width: 380px){
+  .compare-card{border-radius:22px;}
+  .compare-side{border-radius:16px;}
+}
+
+
+/* === Mobile polish + remove any horizontal scroll === */
+html, body{overflow-x:hidden;}
+
+@media (max-width: 720px){
+  .section{padding:72px 0;}
+  .section-head{margin-bottom:18px; gap:10px;}
+  .section-head h2{margin:0;}
+  .section-head .lead{margin-top:6px; line-height:1.45;}
+  .compare-controls{margin-top:14px;}
+  .compare-cards{gap:14px;}
+  .compare-card{padding:14px;}
+  .compare-card__sides{display:grid; grid-template-columns:1fr; gap:10px;}
+  .compare-side{min-width:0;}
+  .compare-side__main, .compare-side__sub{word-break:break-word;}
+}
+
+@media (min-width: 900px){
+  .compare-card__sides{grid-template-columns:1fr 1fr;}
+}
